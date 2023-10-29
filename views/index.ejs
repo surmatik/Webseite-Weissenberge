@@ -1,0 +1,62 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>Weissenberge</title>
+</head>
+<body>
+  <div id="header">
+    <%- include('header') %>
+  </div>
+  
+  <main>
+    <div class="top-image">
+      <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/webcam.jpg" alt="Neuestes Bild">
+    </div>
+    <div class="box" id="webcam">
+      <h1>Webcam Weissenberge</h1>
+      <p>Geniesse einen schönen Ausblick direkt auf das Bergpanorama gegenüber der Weissenberge im Kanton Glarus.
+        Die Webcam erstellt jede 15 Minuten ein neues Bild.</p>
+      <div class="last-images">
+        <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/1.jpg">
+        <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/2.jpg">
+        <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/3.jpg">
+        <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/4.jpg">
+      </div>
+      <a href="/webcam" class="button">&#10140; mehr</a>
+    </div>
+    
+    <div class="box" id="temperatur">
+      <h1>Temperatur</h1>
+      <p>Aktuelle Aussentemperatur Wölflihoschet: <%= aussentemperatur %> °C</p>
+      <div class="iframe-container">
+        <iframe src="https://grafana.linoo.ch/d-solo/a2eced4d-aaf4-4866-8856-25574434a5ac/heizung-weissenberge?orgId=1&panelId=4&from=now-24h&to=now" frameborder="0"></iframe>
+      </div>
+    </div>
+    <div class="box" id="temperatur">
+      <h1>Wetter</h1>
+      <div class="wetter-desktop">
+        <img src="https://www.daswetter.com/wimages/fotof6b00d5cba5c5ef6fb215b14a8e5f0d9.png">
+      </div>
+      <div class="wetter-mobile">
+        <img src="https://www.daswetter.com/wimages/foto4608d857614a7b872b18999623f7b643.png">
+      </div>
+    </div>
+    <div class="box">
+      <h1>Weissenberge von oben</h1>
+      <div class="video">
+				<div class="video-container"><iframe src="https://www.youtube.com/embed/i_X7h9n5Uks"  frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+			</div>
+    </div>
+  </main>
+
+  <div id="footer">
+    <%- include('footer') %>
+  </div>
+</body>
+</html>

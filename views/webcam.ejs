@@ -1,0 +1,43 @@
+<!-- views/webcam.ejs -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>Weissenberge</title>
+</head>
+<body>
+  <div id="header">
+    <%- include('header') %>
+  </div>
+  
+  <main>
+    <div class="box">
+        <a href="/" class="button">&#9754; zurück</a>
+        <h1>Webcam Weiesenberge</h1>
+    </div>
+    <div class="gallery-container">
+      <% for (const image of images) { %>
+        <a href="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/<%= image.filename %>">
+            <img src="https://weissenberge-data.srv-lino-02.surmatik.ch/webcam/<%= image.filename %>" alt="Bild">
+        </a>
+      <% } %>
+    </div>
+    <div class="pagination">
+        <% if (page > 1) { %>
+          <a href="/webcam?page=<%= page - 1 %>" class="button">Vorherige Seite</a>
+        <% } %>
+        <% if (nextPage) { %>
+          <a href="/webcam?page=<%= nextPage %>" class="button">Nächste Seite</a>
+        <% } %>
+      </div>
+  </main>
+
+  <div id="footer">
+    <%- include('footer') %>
+  </div>
+</body>
+</html>
