@@ -14,13 +14,8 @@ app.set('view engine', 'ejs');
 const imagesPerPage = 9;
 
 app.get('/', async (req, res) => {
-  let jsonRequest = axios.get('https://weissenberge-data.srv-lino-02.surmatik.ch/heating-data/all_data.json');
-  
   try {
-    const response = await Promise.race([
-      jsonRequest,
-      new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout'), 5000)))
-    ]);
+    const response = await axios.get('https://weissenberge-data.srv-lino-02.surmatik.ch/heating-data/all_data.json');
 
     const heatingData = response.data;
     const aussentemperatur = heatingData.AUSSENTEMPERATUR;
@@ -32,6 +27,7 @@ app.get('/', async (req, res) => {
     res.render('index', { aussentemperatur: '-' });
   }
 });
+
 
 app.get('/webcam', async (req, res) => {
   const page = req.query.page || 1;
